@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <?php if($show): ?>
+        <link rel="stylesheet" href="../assets/css/style.css">
+     <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+     <?php else :?>
+     <link rel="stylesheet" href="./assets/css/style.css">
+     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+     <?php endif; ?>
+     <title><?=$page_titel?></title>
+</head>
+<body>
+    <?php if(isset($_SESSION['username']) && !$show ){ ?>
+           hello
+    <?php }else if (!isset($_SESSION['username']) && !$show){ ?>
+        <div class="home_page" >
+        <div class="container-fluid " >
+            <div class="d-flex py-4">
+                <div class="col-xl-12 col-md-12 col-lg-12 py-5">
+                    <div class="row py-5">
+                            <div class="col-lg-6 py-5" >
+                                <div class="py-4  text-center">
+                                <div>
+                                  <div class="intro_text">
+                                    <h1 > Make Your Own Todo List </h1>
+                                    <h2 >To be greatful </h2>
+                                        <h3>Join Us </h3>
+                                        <div class="py-4 d-flex  justify-content-center">
+                                            <div class="mx-4">
+                                            <a  href=""><button  class="btn btn-outline-primary">Sign In</button></a>
+                                            </div>
+                                           <div  class=""> <a href="./signup/"><button class="btn btn-outline-info">Sign Up</button></a>  
+                                          </div> 
+                                        </div>
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                            <div class="col-lg-6 d-lg-block d-none text-center py-5">
+                                    <img src="./assets/image/testi-1.jpg"   class="rounded img-thumbnail shadow-sm" width="400px" height="500px"  alt="">
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>    
+        </div>
+      <?php }else { ?>
+        <?php include $template.".phtml"; ?>
+      <?php }?>
+</body>
+</html>

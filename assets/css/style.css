@@ -1,0 +1,30 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.home_page{
+    background-image: url(../image/hero-bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100%;
+}
+
+.intro_text{
+    color:#ff2d75;
+  }
+  
+  .intro_text h3{
+    color:#5995fd !important;
+  }
+  
+  @media (max-width:500px) {
+    h1,h3,h2{
+      font-size:16px;
+    }
+  }
+  
+ 
