@@ -29,7 +29,6 @@
              <th>*</th>
              <th>Id</th>
              <th>Titel</th>
-             <th>complete</th>
              <th>operation</th>
              </tr>
             
@@ -43,11 +42,17 @@
               <?php else:?>
                
                     <?php foreach($alltodos as $value): ?>  
-                      <tr>
-                         <td><input type="checkbox"></td>
-                        <td><?=$value['titel']?></td>
-                        <td><?=$value['description']?></td>
-                        <td><?=$value['complete']?></td>
+                       <tr>
+                         
+                           <td>
+                           <form action="../checkedtodo.php" method="GET">
+                            <input type="hidden" name="id" value="<?=$value['id']?>">
+                            <input onChange="this.form.submit()" type="checkbox"<?=$value['complete'] ? 'checked':'';?>>
+                          </form>
+                        </td>
+                          <td><?=$value['id']?></td>
+                        <td class="<?=$value['complete'] ? 'text-decoration-line-through':'';?>"><?=$value['titel']?></td>
+                      
                         <td>
                           <button  class="btn btn-info">consulte</button>
                           <button class="btn btn-danger">delete</button>
