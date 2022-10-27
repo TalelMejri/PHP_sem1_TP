@@ -4,10 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Congrats</title>
     <style>
-         #my-canvas{
+        img{
+            width: 400px;
+            height: 400px;
+        }
+ #my-canvas{
     position: fixed;
     top: 0;
     left: 0;
@@ -15,29 +20,21 @@
     height: 100%;
 }
 
-.popup{
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  background: #fff;
-  width: 450px;
-  height: 300px;
-  box-shadow:0 25px 50px rgba(0,0,0,0.1),0 0 0 1000px rgba(255,255,255,0.95);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 40px;
-}
+
     </style>
 </head>
 <body>
-
-        <div class="popup">
-            <img src="./storage/<?=$_GET['avatar']?>" alt="">
-            <h2>welcome <?= $_GET['name'] ?> </h2>
-            <b id="close">X</b>
-        </div>
+        <div class="container py-5">
+                <div class="text-center py-4">
+                    <h2 class="section-heading text-uppercase">Welcome</h2>
+                  </div>
+                <div class="row ">
+                        <div class="col-lg-12 text-center py-3">
+                            <img class="mx-auto rounded-circle" src="./storage/<?=$_GET['avatar']?>" alt="..." />
+                            <h4 class="fw-bolder py-2"><?=$_GET['name']?></h4>
+                       </div>
+                </div>
+       </div>
         <canvas id="my-canvas"></canvas>
 </body>
 <script src="./assets/script/index.min.js"></script>
@@ -45,7 +42,7 @@
     var confettiSettings = { target: 'my-canvas' };
     var confetti = new ConfettiGenerator(confettiSettings);
     confetti.render();
-    setTimeout(()=>window.location.href="./index.php",5000);
+    setTimeout(()=>window.location.href="./login",5000);
 </script>
 </body>
 </html>

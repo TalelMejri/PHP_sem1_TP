@@ -23,12 +23,12 @@
         $error['file']="file required ";
         goto showhere;
     }
-    else if(strlen($name)<6){
-        $error['name']="name long than 6";
+    else if(strlen($name)<4){
+        $error['name']="name long than 4";
         goto showhere;
     }
-    else if(strlen($prenom)<6){
-        $error['prenom']="prenom long than 6";
+    else if(strlen($prenom)<4){
+        $error['prenom']="prenom long than 4";
         goto showhere;
     }
     else if(!filter_var($email,FILTER_VALIDATE_EMAIL)){
@@ -59,19 +59,23 @@
    
     else{
         $avatar='../storage/'.$name_file;
-       /* $verifeid_existant=$pdo->prepare("SELECT * from users where email=:email");
-        $query=$verifeid_existant->execute(['email'=>$email]);*/
-        
+        $verifeid_existant=$pdo->prepare("SELECT * from users where email=:email");
+        $verifeid_existant->execute(['email'=>$email]);
+        if($verifeid_existant->rowCount()>0){
+            header("location:index.php?msg=email already exist&type=danger");
+        }else{
+
          $sql=$pdo->prepare("INSERT INTO `users`( `nom`, `prenom`, `email`, `password`, `avatar`) VALUES (:nom,:prenom,:email,:password,:avatar)");
          $sql->execute([
             'nom'=>$name,
             'prenom'=>$prenom,
             'email'=>$email,
-            'password'=>password_hash($password,PASSWORD_DEFAULT),
+            'password'=> password_hash($password,PASSWORD_DEFAULT),
             'avatar'=>$avatar
          ]);
          
          header("location:../congrat.php?name=".$name."&avatar=".$name_file);
+        }
     }
  }
  

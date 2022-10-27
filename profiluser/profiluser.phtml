@@ -1,0 +1,38 @@
+
+
+  <header class="p-2 mb-4 border-bottom">
+    <div class="container">
+      <div class="d-flex justify-content-center">
+        <div class="dropdown text-center">
+          <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="<?=$_SESSION['avataruser']?>" alt="mdo" width="52" height="52" class="rounded-circle">
+          </a>
+           <h4 class="py-2"><?=$_SESSION['nameuser']?></h4>
+          <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><hr class="dropdown-divider"></li>
+            <li><a class="dropdown-item" href="../log_out.php">Log out</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="text-center">
+    <a href=""><button class="btn btn-outline-primary">add Todo</button></a>
+
+     <div class="mt-5 py-4 container">
+         <table class="table table-bordered">
+            <tr>
+             <th>*</th>
+             <th>Id</th>
+             <th>Titel</th>
+             <th>operation</th>
+             </tr>
+             <tr>
+                 
+             </tr>
+         </table>
+     </div>
+  </div>
