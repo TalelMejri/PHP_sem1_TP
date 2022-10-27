@@ -64,7 +64,6 @@
         if($verifeid_existant->rowCount()>0){
             header("location:index.php?msg=email already exist&type=danger");
         }else{
-
          $sql=$pdo->prepare("INSERT INTO `users`( `nom`, `prenom`, `email`, `password`, `avatar`) VALUES (:nom,:prenom,:email,:password,:avatar)");
          $sql->execute([
             'nom'=>$name,

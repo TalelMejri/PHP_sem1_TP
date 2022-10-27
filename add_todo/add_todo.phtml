@@ -1,0 +1,41 @@
+
+     
+<style>
+    img{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+               
+<div class="d-flex p-3 m-4 justify-content-center">   
+    <div class="col-xl-10 col-md-12 col-lg-12">
+          <div class="row shadow-lg rounded">
+                <div class="col-lg-6">
+                        <div class="text-center">
+                           <h1 class="h4 fw-bolder mb-3 py-3">Add Todo :</h1>
+                        </div> 
+               <form action="index.php" method="POST">
+                          <?php if(count($error)>0): ?>  
+                           <div class="alert alert-danger">
+                                <?=$error[0];?>
+                           </div>
+                        <?php endif; ?>
+                        <label >titel</label>
+                        <input type="text" class="form-control mb-4" name="titel">
+                        <label >decription</label>
+                        <input type="text" class="form-control mb-4"  name="description">
+                        <label >date</label>
+                        <input type="date" class="form-control mb-4"  name="date">
+                        <div class="text-center">
+                        <button  name="submit" class="btn btn-primary mt-4" >Add</button>
+                        </div>
+               </form>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block bg-info">
+                    <img src="../assets/image/todo.png" alt="">
+                </div>
+          </div>
+    </div>
+</div>
+
+ 

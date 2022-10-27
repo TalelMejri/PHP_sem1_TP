@@ -19,8 +19,9 @@
     </div>
   </header>
 
+
   <div class="text-center">
-    <a href=""><button class="btn btn-outline-primary">add Todo</button></a>
+    <a href="../add_todo"><button class="btn btn-outline-primary">add Todo</button></a>
 
      <div class="mt-5 py-4 container">
          <table class="table table-bordered">
@@ -28,11 +29,37 @@
              <th>*</th>
              <th>Id</th>
              <th>Titel</th>
+             <th>complete</th>
              <th>operation</th>
              </tr>
+            
+              <?php if($alltodos==''): ?>
+                <tbody>
+                    <tr>
+                    <td>vide</td>
+                    </tr>
+                </tbody>
              <tr>
+              <?php else:?>
+               
+                    <?php foreach($alltodos as $value): ?>  
+                      <tr>
+                         <td><input type="checkbox"></td>
+                        <td><?=$value['titel']?></td>
+                        <td><?=$value['description']?></td>
+                        <td><?=$value['complete']?></td>
+                        <td>
+                          <button  class="btn btn-info">consulte</button>
+                          <button class="btn btn-danger">delete</button>
+                          <button class="btn btn-warning">edit</button>
+                        </td>
+                        </tr>
+                    <?php endforeach; ?>
+               
+              <?php endif; ?>
                  
              </tr>
+             <?php ?>
          </table>
      </div>
   </div>
