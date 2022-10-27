@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 require_once '../db_connected/index.php';
  if(isset($_POST['submit'])){
