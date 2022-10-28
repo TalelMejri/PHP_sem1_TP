@@ -5,7 +5,7 @@
       <div class="d-flex justify-content-center">
         <div class="dropdown text-center">
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <img src="<?=$_SESSION['avataruser']?>" alt="mdo" width="52" height="52" class="rounded-circle">
+          <img src="<?=$_SESSION['avataruser']?>" alt="mdo" width="52" height="52" class="rounded-circle">
           </a>
            <h4 class="py-2"><?=$_SESSION['nameuser']?></h4>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
@@ -22,28 +22,31 @@
 
   <div class="text-center">
     <a href="../add_todo"><button class="btn btn-outline-primary">add Todo</button></a>
-
      <div class="mt-5 py-4 container">
+         <?php if(array_key_exists('msg',$_GET)): ?>
+             <div class="alert alert-<?=$_GET['type']?>">
+                <?=$_GET['msg']?>
+             </div>
+         <?php endif; ?>
          <table class="table table-bordered">
             <tr>
-             <th>*</th>
-             <th>Id</th>
-             <th>Titel</th>
-             <th>operation</th>
-             </tr>
+              <th>*</th>
+              <th>Id</th>
+              <th>Titel</th>
+              <th>operation</th>
+            </tr>
             
-              <?php if($alltodos==''): ?>
+              <?php if(empty($alltodos)): ?>
                 <tbody>
-                    <tr>
-                    <td>vide</td>
+                    <tr class="bg-danger">
+                        <td colspan="6" class="text-white">vide</td>
                     </tr>
                 </tbody>
              <tr>
               <?php else:?>
-               
+                <tbody>
                     <?php foreach($alltodos as $value): ?>  
                        <tr>
-                         
                            <td>
                            <form action="../checkedtodo.php" method="GET">
                             <input type="hidden" name="id" value="<?=$value['id']?>">
@@ -52,19 +55,33 @@
                         </td>
                           <td><?=$value['id']?></td>
                         <td class="<?=$value['complete'] ? 'text-decoration-line-through':'';?>"><?=$value['titel']?></td>
-                      
                         <td>
-                          <button  class="btn btn-info">consulte</button>
-                          <button class="btn btn-danger">delete</button>
-                          <button class="btn btn-warning">edit</button>
+                          <a href=""><button  class="btn btn-info">consulte</button></a>
+                          <button class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModal<?=$value['id'];?>">Delete</button>
+                          <a href="../edit?id=<?=$value['id']?>"><button  class="btn btn-warning">edit</button></a>
                         </td>
+                             <div class="modal fade" id="exampleModal<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel<?=$value['id'];?>">Delete Book :</h5>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                                  </div>
+                                  <div class="modal-body">
+                                      Do you want delete todo <?=$value['titel'];?> ?
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <a href="../delete_todo.php?id=<?=$value['id']?>"> <button type="button" class="btn btn-danger">Delete</button></a>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                         </tr>
                     <?php endforeach; ?>
-               
+                    </tbody>
               <?php endif; ?>
-                 
              </tr>
-             <?php ?>
          </table>
      </div>
   </div>

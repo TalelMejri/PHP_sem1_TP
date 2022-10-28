@@ -1,0 +1,35 @@
+<style>
+    img{
+        width: 100%;
+        height: 100%;
+    }
+</style>
+               
+<div class="d-flex p-3 m-4 justify-content-center">   
+    <div class="col-xl-10 col-md-12 col-lg-12">
+          <div class="row shadow-lg rounded">
+                <div class="col-lg-6">
+                        <div class="text-center">
+                           <h1 class="h4 fw-bolder mb-3 py-3">Update Todo :</h1>
+                        </div> 
+                    <form action="index.php" method="POST">
+                        <input type="hidden" class="form-control mb-4" name="id" value="<?=$todo['id']?>">
+                        <label >titel</label>
+                        <input type="text" class="form-control mb-4" name="titel" value="<?=$todo['titel']?>">
+                        <label >decription</label>
+                        <input type="text" class="form-control mb-4"  name="description" value="<?=$todo['description']?>">
+                        <label >date</label>
+                        <input type="date" class="form-control mb-4"  name="date" value="<?=$todo['due_date']?>">
+                        <div class="text-center">
+                        <button  name="edit" class="btn btn-warning mt-4" >Update</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 d-none d-lg-block bg-info">
+                    <img src="../assets/image/edit.png" alt="">
+                </div>
+          </div>
+    </div>
+</div>
+
+ 

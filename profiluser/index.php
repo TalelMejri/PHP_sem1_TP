@@ -5,6 +5,7 @@
         header("location:../login") ;
         exit;
      }
+
      if(isset($_GET['check'])){
         extract($_GET);
         $sql=$pdo->prepare("SELECT * from todos where id=:id order by complete");
@@ -17,8 +18,8 @@
      $sql=$pdo->prepare("SELECT * from todos where id_user=:id");
      $sql->execute(['id'=>$_SESSION['iduser']]);
      $alltodos=$sql->fetchall();
-    $show=null;
-    $template="profiluser";
-    $page_titel=$_SESSION['nameuser'];
-    include "../layout.phtml";
+     $show=null;
+     $template="profiluser";
+     $page_titel=$_SESSION['nameuser'];
+     include "../layout.phtml";
 ?>
