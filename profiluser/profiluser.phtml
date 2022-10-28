@@ -56,7 +56,45 @@
                           <td><?=$value['id']?></td>
                         <td class="<?=$value['complete'] ? 'text-decoration-line-through':'';?>"><?=$value['titel']?></td>
                         <td>
-                          <a href=""><button  class="btn btn-info">consulte</button></a>
+                        <button  class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#exampleedit<?=$value['id'];?>">consulte</button>
+                          <div class="modal fade" id="exampleedit<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Info  Todo :</h5>
+                                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button></a>
+                                  </div>
+                                  <div class="modal-body">
+                                      <div class="card">
+                                          <div class="card-header">
+                                             <span class="font-weight-bold"><?=$value['titel']?></span>
+                                          </div>
+                                          <div class="card-body">
+                                            <div class="col-xl-8 container d-flex justify-content-center">
+                                              <div class="row ">
+                                                  <div class="col-lg-6">
+                                                         <span class="text-primary"> description :</span>
+                                                  </div>
+                                                  <div class="col-lg-6">
+                                                          <?=$value['description']?>
+                                                  </div>
+                                                  <div class="col-lg-6 fw-bolder">
+                                                  <span class="text-primary"> due date :</span>
+                                                  </div>
+                                                  <div class="col-lg-6">
+                                                  <?=$value['due_date']?>
+                                                  </div>
+                                              </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
                           <button class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModal<?=$value['id'];?>">Delete</button>
                           <a href="../edit?id=<?=$value['id']?>"><button  class="btn btn-warning">edit</button></a>
                         </td>
