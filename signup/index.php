@@ -69,7 +69,7 @@
             'nom'=>$name,
             'prenom'=>$prenom,
             'email'=>$email,
-            'password'=> password_hash($password,PASSWORD_DEFAULT),
+            'password'=>$password,//password_hash($password,PASSWORD_DEFAULT),
             'avatar'=>$avatar
          ]);
          

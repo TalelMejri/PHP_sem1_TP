@@ -14,8 +14,9 @@ require_once '../db_connected/index.php';
         $query=$pdo->prepare("SELECT * from users where email=:email");
         $query->execute(['email'=>$email]);
         $user=$query->fetch();
-        $verify = password_verify($user['password'],$password);
-        if($user==false || !$verify){
+        //$password_hash=password_hash($password,PASSWORD_DEFAULT);
+       // $verify = ( password_verify($password_hash,$user['password']) );
+        if($user==false || $password!=$user['password']){
             header("location:index.php?msg=password or email is incorrect&type=danger");
         }else{
             $_SESSION['iduser']=$user['id'];
