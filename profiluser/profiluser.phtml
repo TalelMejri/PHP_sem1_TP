@@ -9,7 +9,7 @@
           </a>
            <h4 class="py-2"><?=$_SESSION['nameuser']?></h4>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="../edituser/">Settings</a></li>
             <li><a class="dropdown-item" href="#">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="../log_out.php">Log out</a></li>
@@ -24,15 +24,15 @@
     <a href="../add_todo"><button class="btn btn-outline-primary">add Todo</button></a>
      <div class="mt-5 py-4 container">
          <?php if(array_key_exists('msg',$_GET)): ?>
-             <div class="alert alert-<?=$_GET['type']?>">
+             <div class="alert alert-success">
                 <?=$_GET['msg']?>
              </div>
          <?php endif; ?>
          <table class="table table-bordered">
             <tr>
               <th>*</th>
-              <th>Id</th>
-              <th>Titel</th>
+              <th class="text-decoration-line-through">Id</th>
+              <th>Title</th>
               <th>operation</th>
             </tr>
             
@@ -54,7 +54,7 @@
                           </form>
                         </td>
                           <td><?=$value['id']?></td>
-                        <td class="<?=$value['complete'] ? 'text-decoration-line-through':'';?>"><?=$value['titel']?></td>
+                          <td  <?= $value['complete'] ? "class=line_through table-primary" : "" ?> > <?=$value['titel']?> </td>
                         <td>
                         <button  class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#exampleedit<?=$value['id'];?>">consulte</button>
                           <div class="modal fade" id="exampleedit<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -96,7 +96,7 @@
                               </div>
                             </div>
                           <button class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModal<?=$value['id'];?>">Delete</button>
-                          <a href="../edit?id=<?=$value['id']?>"><button  class="btn btn-warning">edit</button></a>
+                          <a class="" href="../edit?id=<?=$value['id']?>"><button <?=$value['complete']==1 ? 'disabled' :''?>   class="btn btn-warning">edit</button></a>
                         </td>
                              <div class="modal fade" id="exampleModal<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">

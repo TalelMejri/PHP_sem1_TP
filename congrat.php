@@ -8,10 +8,10 @@
     <link rel="stylesheet" href="./assets/css/style.css">
     <title>Congrats</title>
     <style>
-        img{
+img{
             width: 400px;
             height: 400px;
-        }
+}
  #my-canvas{
     position: fixed;
     top: 0;
@@ -19,8 +19,6 @@
     width: 100%;
     height: 100%;
 }
-
-
     </style>
 </head>
 <body>
