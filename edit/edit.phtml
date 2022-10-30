@@ -10,8 +10,9 @@
           <div class="row shadow-lg rounded">
                 <div class="col-lg-6">
                         <div class="text-center">
-                           <h1 class="h4 fw-bolder mb-3 py-3">Update Todo :</h1>
+                           <h1 id="update" class="h4 fw-bolder mb-3 py-3">Update Todo :</h1>
                         </div> 
+                        <input type="hidden" id="record" value=<?=isset($_GET['id']) ? $_GET['id'] : 5?>   >
                     <form action="index.php" method="POST">
                         <input type="hidden" class="form-control mb-4" name="id" value="<?=$todo['id']?>">
                         <label >titel</label>
@@ -29,7 +30,9 @@
                     <img src="../assets/image/edit.png" alt="">
                 </div>
           </div>
-    </div>
+    </div> 
 </div>
+
+
 
  

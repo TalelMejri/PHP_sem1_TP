@@ -26,9 +26,10 @@
       font-size:16px;
     }
   }
-  
   .line_through{
     text-decoration: line-through;
   }
 
-
+.hidden{
+  display: none !important;
+}
