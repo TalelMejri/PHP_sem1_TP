@@ -33,3 +33,8 @@
 .hidden{
   display: none !important;
 }
+
+.form-control:focus {
+  border-color: #ff00cc !important;
+  box-shadow: 0 0 0 0.2rem rgba(253, 101, 90, 0.25) !important;
+ }

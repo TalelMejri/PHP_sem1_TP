@@ -7,8 +7,7 @@ $sql->execute([$_GET['id']]);
 $todo=$sql->fetch();
 
 $query=$pdo->prepare("UPDATE todos SET complete=:com where id=:idtodo");
-$query->execute(["com" => !$todo['complete'],
-                "idtodo"=>$_GET['id']]);
+$query->execute(["com" => !$todo['complete'],"idtodo"=>$_GET['id']]);
 header("location:./profiluser") ;
 
 ?>
