@@ -8,9 +8,9 @@
           </a>
            <h4 class="py-2"><?=$_SESSION['nameuser']?></h4>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="../edituser/">Settings</a></li>
+            <li><a class="dropdown-item" href="../edituser/">Settings <i class="bi bi-gear-fill"></i></a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="../log_out.php">Log out</a></li>
+            <li><a class="dropdown-item" href="../log_out.php">Log out <i class="bi bi-box-arrow-right"></i></a></li>
           </ul>
         </div>
       </div>
@@ -18,13 +18,13 @@
   </header>
 
   <div class="text-center">
-    <a href="../add_todo"><button class="btn btn-outline-primary">add Todo</button></a>
+    <a href="../add_todo"><button class="btn btn-outline-primary">add Todo <i class="bi bi-plus-circle-fill"></i></button></a>
     <div class="mt-5 container">
 
      <form action="index.php" method="GET">
         <div class="form-group">
            <input type="text" name="search" class="form-control" value=<?=isset($_GET['search'] ) ? $_GET['search'] : ''?>>
-           <button name="check_search" class="btn btn-success my-2">search</button>
+           <button name="check_search" class="btn btn-success my-2">Search <i class="bi bi-search"></i></button>
         </div>
      </form>
 
@@ -61,7 +61,7 @@
                           <td><?=$value['id']?></td>
                           <td  <?= $value['complete'] ? "class=line_through table-primary" : "" ?> > <?=$value['titel']?> </td>
                         <td>
-                        <button  class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#exampleedit<?=$value['id'];?>">consulte</button>
+                        <button  class="btn btn-info"  data-bs-toggle="modal" data-bs-target="#exampleedit<?=$value['id'];?>"><i class="bi bi-info-circle"></i></button>
                           <div class="modal fade" id="exampleedit<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
                                 <div class="modal-content">
@@ -100,8 +100,8 @@
                                 </div>
                               </div>
                             </div>
-                          <button class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModal<?=$value['id'];?>">Delete</button>
-                          <a class="" href="../edit?id=<?=$value['id']?>"><button <?=$value['complete']==1 ? 'disabled' :''?>   class="btn btn-warning">edit</button></a>
+                          <button class="btn btn-danger " data-bs-toggle="modal" data-bs-target="#exampleModal<?=$value['id'];?>"><i class="bi bi-trash"></i></button>
+                          <a class="" href="../edit?id=<?=$value['id']?>"><button <?=$value['complete']==1 ? 'disabled' :''?>   class="btn btn-warning"><i class="bi bi-pencil-square"></i></button></a>
                         </td>
                              <div class="modal fade" id="exampleModal<?=$value['id'];?>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
                               <div class="modal-dialog">
