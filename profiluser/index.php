@@ -5,7 +5,7 @@
         header("location:../login") ;
         exit;
      }
-
+     
      if(isset($_GET['check'])){
         extract($_GET);
         $sql=$pdo->prepare("SELECT * from todos where id=:id order by complete");
@@ -15,9 +15,29 @@
         $sql1->execute(['id'=>$idtdodo,'comp'=>$todo_check['complete'] ? 0 : 1]);
      }
      
-     $sql=$pdo->prepare("SELECT * from todos where id_user=:id");
-     $sql->execute(['id'=>$_SESSION['iduser']]);
-     $alltodos=$sql->fetchall();
+
+
+     if(isset($_GET['check_search']) && !empty($_GET['search'])){
+
+        extract($_GET);
+        $name_search="%".$search."%";
+        $sql=$pdo->prepare("SELECT * from todos where titel like :name AND id_user=:id ");
+        $sql->execute(['id'=>$_SESSION['iduser'],'name'=>$name_search]);
+        $alltodos=$sql->fetchall();
+            if(!$alltodos){
+                $alltodos="vide";
+            }
+
+     }else{
+      
+        $sql=$pdo->prepare("SELECT * from todos where id_user=:id");
+        $sql->execute(['id'=>$_SESSION['iduser']]);
+        $alltodos=$sql->fetchall();
+        
+     }
+
+
+
      $show=null;
      $template="profiluser";
      $page_titel=$_SESSION['nameuser'];

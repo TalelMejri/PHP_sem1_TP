@@ -40,7 +40,7 @@
         ]);
         $_SESSION['nameuser']=$name;
         $_SESSION['prenomuser']=$prenom;
-        $_SESSION['passworduser']= password_hash( $password,PASSWORD_DEFAULT);
+        $_SESSION['passworduser']= $password;
         $_SESSION['emailuser']=$email;
         $_SESSION['avataruser']=$avatar;
         header("location:../profiluser?msg=edit profil user with success");
@@ -51,7 +51,7 @@
             'name'=>$name,
             'prenom'=>$prenom,
             'email'=>$email,
-            'password'=>password_hash( $password,PASSWORD_DEFAULT)
+            'password'=>$password
         ]);
         $_SESSION['nameuser']=$name;
         $_SESSION['prenomuser']=$prenom;

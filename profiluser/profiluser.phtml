@@ -1,5 +1,4 @@
 
-
   <header class="p-2 mb-4 border-bottom">
     <div class="container">
       <div class="d-flex justify-content-center">
@@ -18,10 +17,17 @@
     </div>
   </header>
 
-
   <div class="text-center">
     <a href="../add_todo"><button class="btn btn-outline-primary">add Todo</button></a>
-     <div class="mt-5 py-4 container">
+    <div class="mt-5 container">
+
+     <form action="index.php" method="GET">
+        <div class="form-group">
+           <input type="text" name="search" class="form-control" value=<?=isset($_GET['search'] ) ? $_GET['search'] : ''?>>
+           <button name="check_search" class="btn btn-success my-2">search</button>
+        </div>
+     </form>
+
          <?php if(array_key_exists('msg',$_GET)): ?>
              <div class="alert alert-success">
                 <?=$_GET['msg']?>
@@ -35,7 +41,7 @@
               <th>operation</th>
             </tr>
             
-              <?php if(empty($alltodos)): ?>
+              <?php if(empty($alltodos) || $alltodos=='vide'): ?>
                 <tbody>
                     <tr class="bg-danger">
                         <td colspan="6" class="text-white">vide</td>
