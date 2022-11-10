@@ -1,5 +1,6 @@
 <?php 
  require_once '../db_connected/index.php';
+ include "../checkdata.php";
  $error=[];
  if(isset($_POST['signup'])){
     extract($_POST);
@@ -61,6 +62,7 @@
         $avatar='../storage/'.$name_file;
         $verifeid_existant=$pdo->prepare("SELECT * from users where email=:email");
         $verifeid_existant->execute(['email'=>$email]);
+        $pass=md5(checkData($password));
         if($verifeid_existant->rowCount()>0){
             header("location:index.php?msg=email already exist&type=danger");
         }else{
@@ -69,10 +71,9 @@
             'nom'=>$name,
             'prenom'=>$prenom,
             'email'=>$email,
-            'password'=>$password,//password_hash($password,PASSWORD_DEFAULT),
+            'password'=>$pass,
             'avatar'=>$avatar
          ]);
-         
          header("location:../congrat.php?name=".$name."&avatar=".$name_file);
         }
     }
