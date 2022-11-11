@@ -62,8 +62,7 @@
         $avatar='../storage/'.$name_file;
         $verifeid_existant=$pdo->prepare("SELECT * from users where email=:email");
         $verifeid_existant->execute(['email'=>$email]);
-        $pass=md5(checkData($password));
-        if($verifeid_existant->rowCount()>0){
+       if($verifeid_existant->rowCount()>0){
             header("location:index.php?msg=email already exist&type=danger");
         }else{
          $sql=$pdo->prepare("INSERT INTO `users`( `nom`, `prenom`, `email`, `password`, `avatar`) VALUES (:nom,:prenom,:email,:password,:avatar)");
@@ -71,7 +70,7 @@
             'nom'=>$name,
             'prenom'=>$prenom,
             'email'=>$email,
-            'password'=>$pass,
+            'password'=>password_hash($password,PASSWORD_DEFAULT),
             'avatar'=>$avatar
          ]);
          header("location:../congrat.php?name=".$name."&avatar=".$name_file);
